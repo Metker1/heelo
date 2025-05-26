@@ -1,6 +1,7 @@
 # Пузырьковый
-import time
 import random
+import time
+
 def bubble(arr):
     n = len(arr)
     for i in  range(n):
