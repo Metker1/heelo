@@ -1,5 +1,6 @@
 # Метод Шелла
-
+import random
+import time
 def shell(data):
     inc = len(data) // 2
     while inc:
