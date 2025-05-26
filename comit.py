@@ -1,31 +1,23 @@
-# Пузырьковый
-import random
-import time
+# Метод Шелла
 
-def bubble(arr):
-    n = len(arr)
-    for i in  range(n):
-        swapped = False
+def shell(data):
+    inc = len(data) // 2
+    while inc:
+        for i, el in enumerate(data):
+            while i >= inc and data[i - inc] > el:
+                data[i] = data[i-inc]
+                i -= inc
+            data[i] = el
+        inc = 1 if inc == 2 else int(inc*5.0//11)
 
-        for j in range(0,n - i -1):
-
-            if arr[j] > arr[j + 1]:
-                arr[j],arr[j+1] = arr[j+1],arr[j]
-                swapped = True
-
-
-        if not swapped:
-            break
-
-
-
-
-arr = []
+    return data
+data = []
 for i in range(10000):
-    arr.append(random.randint(1,10000))
+    data.append(random.randint(1,10000))
+
 start_time = time.time()
-bubble(arr)
+shell(data)
 end_time = time.time()
 elapsed = end_time - start_time
-print(arr)
+print(data)
 print(f'Затраченное время: {elapsed:.4f}')
